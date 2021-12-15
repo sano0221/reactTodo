@@ -16,15 +16,15 @@ function App() {
           <Route exact path="/">
             <Login />
           </Route>
-          <Route path ="/home" render = {() => (
+          <Route path ="/home" render = {({match: {url}}) => (
             <Switch>
-              <Route exact path="/home">
+              <Route exact path={url}>
                 <Home />
               </Route>
-              <Route path="/home/user_management">
+              <Route path={`${url}/user_management`}>
                 <UserManagement />
               </Route>
-              <Route path="/home/setting">
+              <Route path={`${url}/setting`}>
                 <Setting />
               </Route>
             </Switch>
