@@ -3,6 +3,8 @@ import {Login} from "./compoonents/pages/Login";
 import {Home} from "./compoonents/pages/Home";
 import {UserManagement} from "./compoonents/pages/UserManagement";
 import {Setting} from "./compoonents/pages/Setting";
+import { StyledComponentPractice } from './compoonents/pages/StyledComponentPractice';
+import { Effect } from './Effect.';
 import './App.css';
 
 function App() {
@@ -10,8 +12,9 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Link to="/">Login</Link>
+
         <br />
-        <Link to="home">Home</Link>
+        <Link to="/home">Home</Link>
         <Switch>
           <Route exact path="/">
             <Login />
@@ -31,6 +34,8 @@ function App() {
           )}>
           </Route>
         </Switch> 
+        <StyledComponentPractice />
+        <Effect />
       </BrowserRouter>
       
     </div>
