@@ -1,31 +1,30 @@
-import { Switch, Route } from "react-router-dom"
+import { Switch, Route, } from "react-router-dom";
+import { memo } from "react";
 
 import { Login } from "../compoonents/pages/Login";
-import { Home } from "../compoonents/pages/Home";
-import { UserManagement } from "../compoonents/pages/UserManagement";
-import { Setting } from "../compoonents/pages/Setting";
-import "../App.css";
+import { HomeRoutes } from "./HomeRoutes";
 
-export const Router = () => {
-    return(
+export const Router = memo(() => {
+    return (
         <Switch>
             <Route exact path="/">
                 <Login />
             </Route>
-            <Route path ="/home" render = {({match: {url}}) => (
+            <Route path="/home" render={({ match: { url } }) => (
                 <Switch>
-                    <Route exact path={url}>
-                        <Home />
-                    </Route>
-                    <Route path={`${url}/user_management`}>
-                        <UserManagement />
-                    </Route>
-                    <Route path={`${url}/setting`}>
-                        <Setting />
-                    </Route>
+                    {HomeRoutes.map((route) => (
+                        <Route
+                            key={route.path}
+                            exact={route.exact}
+                            path={`${url}${route.path}`}
+                        >
+                            {route.children}
+                        </Route>
+                    ))}
                 </Switch>
-            )}>
-            </Route>
-        </Switch> 
+            )}
+            />
+        </Switch>
     )
-}
+})
+    
